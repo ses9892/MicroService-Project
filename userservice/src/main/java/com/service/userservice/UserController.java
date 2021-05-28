@@ -1,19 +1,24 @@
 package com.service.userservice;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import service.vo.Greeting;
 
 @RestController
 @RequestMapping(value = "/")
 public class UserController {
 
+    @Autowired
     private final Environment env ;
+    private Greeting greeting;
 
     public UserController(Environment env) {
         this.env = env;
     }
+
 
     @GetMapping(value = "/health_check") //서버 상태 체크
     public String status(){
