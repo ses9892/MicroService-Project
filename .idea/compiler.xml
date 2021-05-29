@@ -7,18 +7,21 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="gateway" />
         <module name="ecoomerce" />
         <module name="userservice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="ecoomerce" target="11" />
+      <module name="gateway" target="11" />
       <module name="userservice" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ecoomerce" options="-parameters" />
+      <module name="gateway" options="-parameters" />
       <module name="userservice" options="-parameters" />
     </option>
   </component>
