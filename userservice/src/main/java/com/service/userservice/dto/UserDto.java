@@ -7,7 +7,7 @@ import java.util.Date;
 @Data
 public class UserDto{
     private String email;
-    private  String password;
+    private  String pwd;
     private  String name;
     // 여기까지 받아야할 데이터
     private  String userId;
