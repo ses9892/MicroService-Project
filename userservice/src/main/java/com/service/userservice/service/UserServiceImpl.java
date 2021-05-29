@@ -26,6 +26,7 @@ public class UserServiceImpl implements  UserService{
         //Dto -> Entity 변환
         userEntity.setEncryptedPwd("encrypted_password");
         userRepository.save(userEntity);
-        return null;
+        userDto = mapper.map(userEntity,UserDto.class);
+        return userDto;
     }
 }
