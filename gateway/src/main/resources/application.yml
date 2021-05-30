@@ -6,30 +6,12 @@ spring:
     name: gateway-service
   cloud:
     gateway:
-      default-filters:
-        - name: GlobalFilter
-          args:
-            baseMessage : Spring Cloud GateWay GlobalFilter
-            preLogger: true
-            postLogger: false
       routes:
-        - id: first-service
-          uri: lb://MY-FIRST-SERVICE
+        - id: USER-SERVICE
+          uri: lb://USER-SERVICE
           predicates:
-            - Path=/first-service/**
-          filters:
-             - CustomFilter
-        - id: second-service
-          uri: lb://MY-SECOND-SERVICE
-          predicates:
-            - Path=/second-service/**
-          filters:
-             - name: CustomFilter
-             - name: LoggingFilter
-               args:
-                 baseMessage: 서비스2의 Logging 필터
-                 preLogger: true
-                 postLogger: true
+            - Path=/user-service/**
+
 
 
 eureka:

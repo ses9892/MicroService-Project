@@ -2,6 +2,7 @@ package com.service.userservice.controller;
 
 import com.service.userservice.dto.UserDto;
 import com.service.userservice.service.UserServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +14,13 @@ import service.vo.Greeting;
 import service.vo.RequestUser;
 import service.vo.ResponseUser;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequestMapping(value = "/")
+@RequestMapping(value = "/user-service/")
+@Slf4j
 public class UserController {
 
     @Autowired
@@ -29,12 +32,13 @@ public class UserController {
     public UserController(Environment env) {
         this.env = env;
     }
-    @GetMapping(value = "/health_check") //서버 상태 체크
+        @GetMapping(value = "/health_check") //서버 상태 체크
     public String status(){
-        return "Good!";
+        return String.format("Good Port(s) = %s",env.getProperty("local.server.port"));
     }
     @GetMapping(value = "/welcome") //서버 상태 체크
-    public String welcome(){
+    public String welcome(HttpServletRequest request){
+        log.info(request.getParameter("stack"));
         return env.getProperty("greeting.message");
     }
 

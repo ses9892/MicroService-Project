@@ -10,11 +10,11 @@ public class FilterConfig {
 //    @Bean
     public RouteLocator gatwayRoutes(RouteLocatorBuilder builder) {
         return builder.routes()
-                .route(r -> r.path("/first-service/**")
+                .route(r -> r.path("/user-service/**")
                         .filters(f -> f.addRequestHeader("first-request", "first-request-header")
                                 .addResponseHeader("first-response", "first-response")
                         .addRequestParameter("jinho","men"))
-                        .uri("http://localhost:8011/"))
+                        .uri("http://localhost:9011/"))
                 .route(r -> r.path("/second-service/**")
                         .filters(f -> f.addResponseHeader("second-request", "second-request-header")
                                 .addResponseHeader("second-response", "second-response"))
