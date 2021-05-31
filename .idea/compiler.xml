@@ -9,9 +9,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="catalogservice" />
         <module name="gateway" />
-        <module name="catalog" />
         <module name="ecoomerce" />
         <module name="userservice" />
+        <module name="orderservice" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,6 +22,7 @@
       <module name="categoryservice" target="11" />
       <module name="ecoomerce" target="11" />
       <module name="gateway" target="11" />
+      <module name="orderservice" target="11" />
       <module name="userservice" target="11" />
     </bytecodeTargetLevel>
   </component>
@@ -34,6 +35,7 @@
       <module name="categoryservice" options="-parameters" />
       <module name="ecoomerce" options="-parameters" />
       <module name="gateway" options="-parameters" />
+      <module name="orderservice" options="-parameters" />
       <module name="userservice" options="-parameters" />
     </option>
   </component>

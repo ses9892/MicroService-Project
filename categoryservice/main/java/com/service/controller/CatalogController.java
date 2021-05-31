@@ -1,6 +1,8 @@
 package com.service.controller;
 
+import com.service.jpa.catalogEntity;
 import com.service.service.CatalogService;
+import com.service.vo.ResponseCatalog;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -32,14 +36,14 @@ public class CatalogController {
         return String.format("Good this port(s) is %s",request.getServerPort());
     }
 
-//    @GetMapping(value = "/catalogs")
-//    public ResponseEntity<List<ResponseCatalog>> getUsers(){
-//        Iterable<catalogEntity> catalogs = catalogService.getAllCatalogs();
-//        List<ResponseCatalog> users = new ArrayList<>();
-//        for (catalogEntity catalogEntity : catalogs) {
-//            users.add(new ModelMapper().map(catalogEntity,ResponseCatalog.class));
-//        }
-//        // HATEOAS 해도 되는구간=====
-//        return ResponseEntity.status(HttpStatus.OK).body(users);
-//    }
+    @GetMapping(value = "/catalogs")
+    public ResponseEntity<List<ResponseCatalog>> getUsers(){
+        Iterable<catalogEntity> catalogs = catalogService.getAllCatalogs();
+        List<ResponseCatalog> users = new ArrayList<>();
+        for (catalogEntity catalogEntity : catalogs) {
+            users.add(new ModelMapper().map(catalogEntity,ResponseCatalog.class));
+        }
+        // HATEOAS 해도 되는구간=====
+        return ResponseEntity.status(HttpStatus.OK).body(users);
+    }
 }
