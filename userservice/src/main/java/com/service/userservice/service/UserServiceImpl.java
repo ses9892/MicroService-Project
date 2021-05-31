@@ -6,9 +6,13 @@ import com.service.userservice.jpa.UserEntity;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import service.vo.ResponseOrder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -35,5 +39,22 @@ public class UserServiceImpl implements  UserService{
         userRepository.save(userEntity);
         userDto = mapper.map(userEntity,UserDto.class);
         return userDto;
+    }
+    //유저 1건을 조회할 메소드
+    @Override
+    public UserDto getUserByUserId(String userId) {
+        UserEntity userEntity = userRepository.findByUserId(userId);
+        if(userEntity==null){
+            throw new UsernameNotFoundException("User Name Not found");
+        }
+        UserDto userDto = new ModelMapper().map(userEntity,UserDto.class);
+        List<ResponseOrder> orderList = new ArrayList<>();
+        userDto.setOrders(orderList);
+        return userDto;
+    }
+
+    @Override
+    public Iterable<UserEntity> getUserAll() {
+        return userRepository.findAll();
     }
 }
