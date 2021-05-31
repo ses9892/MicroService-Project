@@ -60,7 +60,8 @@ public class UserController {
 //        URI 와 201Created 응답
         ResponseUser responseUser = mapper.map(userDto,ResponseUser.class);
         return ResponseEntity.created(location).body(responseUser);
-                //status(HttpStatus.CREATED).build();
+        //클라이언트 헤더에 유저의 정보를 확인하는 헤더 URI 이 전달된다.
+        //status(HttpStatus.CREATED).build();
     }
     //유저 전체조회 요청 메소드
     @GetMapping(value = "/users")
