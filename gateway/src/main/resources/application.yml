@@ -11,9 +11,6 @@ spring:
           uri: lb://USER-SERVICE
           predicates:
             - Path=/user-service/**
-
-
-
 eureka:
   client:
     register-with-eureka: true

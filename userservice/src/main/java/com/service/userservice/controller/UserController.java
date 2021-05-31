@@ -37,6 +37,7 @@ public class UserController {
     public UserController(Environment env) {
         this.env = env;
     }
+
         @GetMapping(value = "/health_check") //서버 상태 체크
     public String status(){
         return String.format("Good Port(s) = %s",env.getProperty("local.server.port"));
