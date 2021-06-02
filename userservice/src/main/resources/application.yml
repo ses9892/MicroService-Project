@@ -29,6 +29,7 @@ eureka:
     service-url:
       defaultZone: http://localhost:9000/eureka
 
+# 토큰 정보 (소멸시간 + key)
 token:
   expiration_time: 864000000 #10 days
   secret: user_token          #Key

@@ -70,16 +70,20 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         String userName = ((User)authResult.getPrincipal()).getUsername();
         UserDto userDto = userService.getUserDetailsByEmail(userName);
         log.info(String.valueOf(userDto));
+        //토큰생성
         String token = Jwts.builder()
                 .setSubject(userDto.getUserId())
                 .setExpiration(new Date(System.currentTimeMillis()+Long.parseLong(env.getProperty("token.expiration_time"))))
                 // 토큰 만료시간 : 현재시간 + 10일후
                 .signWith(SignatureAlgorithm.HS512,env.getProperty("token.secret")).compact();
                 // 토큰 생성시 보안키
+        
+        //토큰 Header 전달 + userId 전달
         response.addHeader("token",token);
         response.addHeader("userId",userDto.getUserId());
+
 //        authResult (인증완료) 에서  .getPrincipal() 인증된것을 가지고온다.
-//         (User) security.core.userdetails 객체로 변환시켜주면 User에 저장되있는 이름을 가져올수 잇다.1
+//         (User) security.core.userdetails 객체로 변환시켜주면 User에 저장되있는 이름을 가져올수 잇다.
     }
 
 }
