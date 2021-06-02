@@ -6,6 +6,8 @@ import com.service.userservice.jpa.UserEntity;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,18 @@ public class UserServiceImpl implements  UserService{
     private BCryptPasswordEncoder passwordEncoder;
     //해당 BCryptPasswordEncoder는 서버실행시 생성된 Bean이 따로없어서 서버실행 클래스파일에서 Bean생성후 @Autowired 해야한다.
 
+    //UserService -> UserDetailsService 의 메소드 재정의의
+   @Override
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+       UserEntity userEntity = userRepository.findByEmail(userName);
+
+       if(userEntity==null){
+             throw  new UsernameNotFoundException("userName is Not");
+       }
+        return new User(userEntity.getEmail(),userEntity.getEncryptedPwd(),true,
+                true,true,true
+                ,new ArrayList<>());
+    }
 
     @Override
     public UserDto creatUser(UserDto userDto) {
@@ -57,4 +71,14 @@ public class UserServiceImpl implements  UserService{
     public Iterable<UserEntity> getUserAll() {
         return userRepository.findAll();
     }
+
+    @Override
+    public UserDto getUserDetailsByEmail(String userName) {
+        UserEntity userEntity =userRepository.findByEmail(userName);
+        if(userEntity==null){
+            throw new UsernameNotFoundException("userName is Not Found!!");
+        }
+        return new ModelMapper().map(userEntity,UserDto.class);
+    }
+
 }

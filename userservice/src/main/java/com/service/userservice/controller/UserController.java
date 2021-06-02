@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/user-service/")
+@RequestMapping(value = "/")
 @Slf4j
 public class UserController {
 

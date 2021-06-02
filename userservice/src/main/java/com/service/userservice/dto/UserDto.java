@@ -19,6 +19,6 @@ public class UserDto{
     private Date createdAt; //가입날짜
     private List<ResponseOrder> orders;
 
-    private  String encryptedPassword;  //암호화된 pw
+    private  String encryptedPwd;  //암호화된 pw
     }
 
