@@ -1,4 +1,6 @@
 # MicroService-Project
+Naver Blog = https://blog.naver.com/ses7361
+
 Spring Cloud 를 이용한 MSA 아키텍쳐 형식 프로젝트
 1. 구조
 ![img_5.png](img_5.png)
