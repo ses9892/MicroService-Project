@@ -1,6 +1,16 @@
 # MicroService-Project
 Naver Blog = https://blog.naver.com/ses7361
 
+Front End : X <br>
+사용 도구 : IntelliJ , Postmen <br>
+개발 환경 : Spring Boot , Spring Cloud , Spring Security , JPA(H2) , JWS등등<br>
+
+개발 목적 : Spring Cloud 를 이용하여 MicroService를 구현해보며,
+Rest형식으로 다양한 기능을 구현하여 공부하는 목적
+
+
+
+
 Spring Cloud 를 이용한 MSA 아키텍쳐 형식 프로젝트
 1. 구조
 ![img_10.png](img_10.png)
