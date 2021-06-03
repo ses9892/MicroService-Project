@@ -41,6 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //        http.authorizeRequests().antMatchers("/users/**").permitAll();
         //모든 요청을 security가 허용하는것이아닌 172.30.1.17의 IP를 허용하고
         //getAuthentionFilter를 통과시킨 데이터를 통해서만 권환,데이터 부여한다.
+        http.authorizeRequests().antMatchers("/actuator/**").permitAll();
         http.authorizeRequests().antMatchers("/**")
                 .hasIpAddress("127.0.0.1").and().addFilter(getAuthentionFilter());
 

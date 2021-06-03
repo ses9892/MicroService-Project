@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="catalogservice" />
+        <module name="configservice" />
         <module name="gateway" />
         <module name="ecoomerce" />
         <module name="userservice" />
@@ -20,6 +21,7 @@
       <module name="catalogservice" target="11" />
       <module name="CatalogService" target="11" />
       <module name="categoryservice" target="11" />
+      <module name="configservice" target="11" />
       <module name="ecoomerce" target="11" />
       <module name="gateway" target="11" />
       <module name="orderservice" target="11" />
@@ -33,6 +35,7 @@
       <module name="catalogService" options="-parameters" />
       <module name="catalogservice" options="-parameters" />
       <module name="categoryservice" options="-parameters" />
+      <module name="configservice" options="-parameters" />
       <module name="ecoomerce" options="-parameters" />
       <module name="gateway" options="-parameters" />
       <module name="orderservice" options="-parameters" />

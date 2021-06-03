@@ -12,6 +12,7 @@ public class ResponseUser {
     private String email;
     private String name;
     private String userId;
+    private  String encryptedPwd;  //암호화된 pw
 
     private List<ResponseOrder> orders;
 

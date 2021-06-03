@@ -35,10 +35,10 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
                 return onError(exchange,"no Authorization Header", HttpStatus.UNAUTHORIZED);
                 //에러를 반환
             }
+            log.info(env.getProperty("token.secret"));
             //반환값은 List형태여서 0번째 index를 찾는다.
             String authorization = request.getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
             String jwt = authorization.replace("Bearer","");
-
             if(!isJwtValid(jwt)){
                 return onError(exchange,"JWT token is not valid",HttpStatus.UNAUTHORIZED);
             }

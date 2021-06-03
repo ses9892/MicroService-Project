@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import service.vo.RequestUpdateUser;
 import service.vo.ResponseOrder;
 
 import java.util.ArrayList;
@@ -79,6 +80,24 @@ public class UserServiceImpl implements  UserService{
             throw new UsernameNotFoundException("userName is Not Found!!");
         }
         return new ModelMapper().map(userEntity,UserDto.class);
+    }
+
+    @Override
+    public UserDto updateUserByUserId(String userId, RequestUpdateUser requestUpdateUser) {
+       UserEntity userEntity = userRepository.findByUserId(userId);
+       if(userEntity==null){
+           throw new UsernameNotFoundException("해당 유저는 존재 하지 않습니다.");
+       }
+// 0000 ,0000  = ok
+        // DB에는 인코딩되어있는 패스워드 자체로 되어있때문
+       if(!passwordEncoder.matches(requestUpdateUser.getPwd(),userEntity.getEncryptedPwd())){
+           throw new UsernameNotFoundException("비밀번호가 일치 하지 않습니다");
+       }
+       userEntity.setEncryptedPwd(passwordEncoder.encode(requestUpdateUser.getUpdatePwd()));
+
+       userRepository.save(userEntity);
+       UserDto userDto = new ModelMapper().map(userEntity,UserDto.class);
+        return userDto;
     }
 
 }

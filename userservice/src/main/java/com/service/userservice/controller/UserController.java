@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import service.vo.Greeting;
+import service.vo.RequestUpdateUser;
 import service.vo.RequestUser;
 import service.vo.ResponseUser;
 
@@ -40,7 +41,9 @@ public class UserController {
 
         @GetMapping(value = "/health_check") //서버 상태 체크
     public String status(){
-        return String.format("Good Port(s) = %s",env.getProperty("local.server.port"));
+        return String.format("Sever Port(s)= "+env.getProperty("local.server.port")+
+                            ",with token secret= "+env.getProperty("token.secret")+
+                ",with token time= "+env.getProperty("token.expiration_time"));
     }
     @GetMapping(value = "/welcome") //서버 상태 체크
     public String welcome(HttpServletRequest request) {
@@ -82,6 +85,13 @@ public class UserController {
         ResponseUser responseUser = new ModelMapper().map(user,ResponseUser.class);
         // HATEOAS 해도 되는구간=====
         return ResponseEntity.status(HttpStatus.OK).body(responseUser);
+    }
+    @PutMapping(value = "/users/{userId}")
+    public ResponseEntity<ResponseUser> updateUserId(@PathVariable("userId")String userId,
+                                                     @Valid @RequestBody RequestUpdateUser RequestUpdateUser){
+       UserDto userDto =  userService.updateUserByUserId(userId,RequestUpdateUser);
+       ResponseUser responseUser = new ModelMapper().map(userDto,ResponseUser.class);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(responseUser);
     }
 
 }

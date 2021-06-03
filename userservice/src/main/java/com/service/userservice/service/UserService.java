@@ -4,6 +4,7 @@ import com.service.userservice.dto.UserDto;
 import com.service.userservice.jpa.UserEntity;
 import org.apache.catalina.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import service.vo.RequestUpdateUser;
 
 import java.util.ArrayList;
 
@@ -13,4 +14,6 @@ public interface UserService extends UserDetailsService {
     UserDto getUserByUserId(String userId);
     Iterable<UserEntity> getUserAll();
     UserDto getUserDetailsByEmail(String userName);
+
+    UserDto updateUserByUserId(String userId, RequestUpdateUser requestUpdateUser);
 }

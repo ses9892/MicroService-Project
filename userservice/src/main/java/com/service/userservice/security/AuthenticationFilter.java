@@ -68,9 +68,11 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         log.info("로그인성공!");
         log.info("인증완료된 ID : "+((User)authResult.getPrincipal()).getUsername());
         String userName = ((User)authResult.getPrincipal()).getUsername();
+        //userId
         UserDto userDto = userService.getUserDetailsByEmail(userName);
         log.info(String.valueOf(userDto));
         //토큰생성
+        //JWS json web service
         String token = Jwts.builder()
                 .setSubject(userDto.getUserId())
                 .setExpiration(new Date(System.currentTimeMillis()+Long.parseLong(env.getProperty("token.expiration_time"))))
