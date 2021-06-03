@@ -4,9 +4,13 @@ server:
 spring:
   application:
     name: config-server
+  profiles:
+    active: native
   cloud:
     config:
       server:
-        git:
-          uri: file:\\\C:\Users\ses12\IdeaProjects\MicroService-Project-Eureka\configservice\src\main\resources\git-local-repo
+        native:
+          search-locations: file:\\\C:\Users\ses12\IdeaProjects\MicroService-Project-Eureka\configservice\src\main\resources\native-file-repo
+        #git:
+          #uri: file:\\\C:\Users\ses12\IdeaProjects\MicroService-Project-Eureka\configservice\src\main\resources\git-local-repo
 
