@@ -4,6 +4,7 @@ Naver Blog = https://blog.naver.com/ses7361
 Front End : X <br>
 사용 도구 : IntelliJ , Postmen <br>
 개발 환경 : Spring Boot , Spring Cloud , Spring Security , JPA(H2) , JWT등등<br>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RabbitMQ
 
 개발 목적 : Spring Cloud 를 이용하여 MicroService를 구현해보며,
 Rest형식으로 다양한 기능을 구현하여 공부하는 목적
