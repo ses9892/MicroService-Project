@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: config-server
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
   profiles:
     active: native
   cloud:
@@ -13,4 +18,8 @@ spring:
           search-locations: file:\\\C:\Users\ses12\IdeaProjects\MicroService-Project-Eureka\configservice\src\main\resources\native-file-repo
         #git:
           #uri: file:\\\C:\Users\ses12\IdeaProjects\MicroService-Project-Eureka\configservice\src\main\resources\git-local-repo
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,beans,busrefresh
