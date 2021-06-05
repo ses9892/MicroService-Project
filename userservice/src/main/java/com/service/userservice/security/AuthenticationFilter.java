@@ -71,6 +71,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         //userId
         UserDto userDto = userService.getUserDetailsByEmail(userName);
         log.info(String.valueOf(userDto));
+        log.info(env.getProperty("token.secret"));
         //토큰생성
         //JWS json web service
         String token = Jwts.builder()

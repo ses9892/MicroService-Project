@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: org.springframework.cloud:spring-cloud-starter-gateway:3.0.4-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-starter-gateway/3.0.4-SNAPSHOT/spring-cloud-starter-gateway-3.0.4-20210602.210851-18.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-starter-gateway/3.0.4-SNAPSHOT/spring-cloud-starter-gateway-3.0.4-20210605.022948-23.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-starter-gateway/3.0.4-SNAPSHOT/spring-cloud-starter-gateway-3.0.4-20210602.210851-18-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-starter-gateway/3.0.4-SNAPSHOT/spring-cloud-starter-gateway-3.0.4-20210605.022948-23-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-starter-gateway/3.0.4-SNAPSHOT/spring-cloud-starter-gateway-3.0.4-20210602.210851-18-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-starter-gateway/3.0.4-SNAPSHOT/spring-cloud-starter-gateway-3.0.4-20210605.022948-23-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
