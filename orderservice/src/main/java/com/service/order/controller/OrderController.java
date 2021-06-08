@@ -5,6 +5,7 @@ import com.service.order.jpa.OrderEntity;
 import com.service.order.service.OrderSerivce;
 import com.service.order.vo.RequestOrder;
 import com.service.order.vo.ResponseOrder;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/order-service/")
+@Slf4j
 public class OrderController {
 
     @Autowired
@@ -42,10 +44,14 @@ public class OrderController {
     @GetMapping(value = "/{userId}/orders")
     public ResponseEntity<List<ResponseOrder>> getOrder(@PathVariable("userId") String userId ){
         Iterable<OrderEntity> orderEntities =orderSerivce.getOrderByUserId(userId);
+        log.info(String.valueOf(orderEntities));
         List<ResponseOrder> responseOrders = new ArrayList<>();
-        orderEntities.forEach(v->{
-            responseOrders.add(new ModelMapper().map(v,ResponseOrder.class));
-        });
+        for (OrderEntity order:orderEntities) {
+            responseOrders.add(new ModelMapper().map(order,ResponseOrder.class));
+        }
+//        orderEntities.forEach(v->{
+//            responseOrders.add(new ModelMapper().map(v,ResponseOrder.class));
+//        });
         return ResponseEntity.status(HttpStatus.OK).body(responseOrders);
     }
 

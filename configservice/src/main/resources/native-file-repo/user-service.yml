@@ -14,3 +14,8 @@ spring:
 
 gateway:
   ip: 127.0.0.1
+
+order_serivce:
+  url: http://order-service/order-service/%s/orders
+  #@LoadBalance 를 붙여 줌으로써 localhost:8000 대신 유레카서버의 application name으로 사용가능
+  #WHY? 유레카 서버에 등록했으며, GateWay routes에 등록했기때문문

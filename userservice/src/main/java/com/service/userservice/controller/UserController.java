@@ -10,6 +10,7 @@ import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -79,7 +80,9 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(users);
     }
     //개별유저 조회
-    @GetMapping(value = "/users/{userId}")
+    // produces 속성은 consumes와 반대로 클라이언트가 요청을 보냈을 때 특정한 데이터 타입으로 응답하겠다는 속성
+    // 즉, 무조건 JSON 타입으로 응답하겠다 이말
+    @GetMapping(value = "/users/{userId}" , produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<ResponseUser> getUserId(@PathVariable("userId") String userId){
         UserDto user = userService.getUserByUserId(userId);
         ResponseUser responseUser = new ModelMapper().map(user,ResponseUser.class);
@@ -93,6 +96,7 @@ public class UserController {
        ResponseUser responseUser = new ModelMapper().map(userDto,ResponseUser.class);
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(responseUser);
     }
+
 
 }
 
