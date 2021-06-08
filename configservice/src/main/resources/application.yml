@@ -16,8 +16,11 @@ spring:
       server:
         native:
           search-locations: file:\\\C:\Users\ses12\IdeaProjects\MicroService-Project-Eureka\configservice\src\main\resources\native-file-repo
+        #Config 를 읽어올 파일의 위치설정 (Native)
         #git:
           #uri: file:\\\C:\Users\ses12\IdeaProjects\MicroService-Project-Eureka\configservice\src\main\resources\git-local-repo
+
+# Actuator
 management:
   endpoints:
     web:

@@ -3,8 +3,8 @@ spring:
     config:
       uri: http://127.0.0.1:8888
       name: user-service
-  profiles:
-    active: native
+#  profiles:
+#    active: native
   # http://127.0.0.1:8888 에서 읽어오고자 하는 파일 ecommerce.yml 이름 명시
 
 # spring-cloud-starter-config  , spring-cloud-starter-bootstrap 을 DI 하게 되면

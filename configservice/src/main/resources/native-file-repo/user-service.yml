@@ -1,6 +1,16 @@
 token:
   expiration_time: 864000000 #10 days
-  secret: user_token_native_ecommerce_changed_#4
+  secret: '{cipher}9e2887b9597b22dc2772ffa82a80da82124ea670d3dbc690302e34c267193b2f
+  f1a80c2bb599aca379b0d78bbbf44a51636ed33ceecfce5d3c95ad50e19240a2'
+
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: '{cipher}934dbe3ecc79d077e13d4b3089a644b70fa5961ad92d8bd6694423b738792ed7'
+    # 암호화는 ''를 사용해주자
+    # {cipher} 는 암호화된 코드임을 명시해주므로 config를 읽어올때 디코딩해준다,
 
 gateway:
   ip: 127.0.0.1

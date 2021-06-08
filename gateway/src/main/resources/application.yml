@@ -36,7 +36,7 @@ spring:
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
-            - AuthorizationHeaderFilter
+            - AuthorizationHeaderFilter # 로그인 요청 방식 라우터 ( JWT ) 인증방식 요청
         - id: USER-SERVICE
           uri: lb://USER-SERVICE
           predicates:

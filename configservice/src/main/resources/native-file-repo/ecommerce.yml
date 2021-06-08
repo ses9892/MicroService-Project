@@ -1,6 +1,7 @@
 token:
   expiration_time: 864000000 #10 days
-  secret: user_token_native_ecommerce_changed_#4
+  secret: '{cipher}9e2887b9597b22dc2772ffa82a80da82124ea670d3dbc690302e34c267193b2f
+  f1a80c2bb599aca379b0d78bbbf44a51636ed33ceecfce5d3c95ad50e19240a2'
 
 gateway:
   ip: 127.0.0.1
