@@ -1,6 +1,7 @@
 package com.service.userservice.controller;
 
 import com.service.userservice.dto.UserDto;
+import com.service.userservice.feign.OrderServiceClient;
 import com.service.userservice.jpa.UserEntity;
 import com.service.userservice.service.UserServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -8,6 +9,7 @@ import org.apache.catalina.User;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

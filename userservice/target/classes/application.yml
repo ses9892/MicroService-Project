@@ -5,26 +5,24 @@ server:
 spring:
   application:
     name: user-service
+# rabbit-MQ 서버에 연결
   rabbitmq:
     host: 127.0.0.1
     port: 5672
     username: guest
     password: guest
+# JPA Entity 추가 sql 파일읽고 자동추가
   jpa:
     generate-ddl: true
     show-sql: true
     hibernate:
       ddl-auto: create
+# H2COnsole 사용
   h2:
     console:
       enabled: true
       path: /h2-console
-#  datasource:
-#    driver-class-name: org.h2.Driver
-#    url: jdbc:h2:mem:testdb
-#    username: sa
-#    password:
-
+#유레카 서버 연동
 eureka:
   instance:
     instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
@@ -33,11 +31,7 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:9000/eureka
-
-# 토큰 정보 (소멸시간 + key)
-#token:
-#  expiration_time: 864000000 #10 days
-#  secret: user_token          #Key
+#Actuator
 management:
   endpoints:
     web:

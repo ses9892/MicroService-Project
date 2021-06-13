@@ -2,6 +2,7 @@ package com.service.userservice.service;
 
 import com.service.userservice.UserRepository;
 import com.service.userservice.dto.UserDto;
+import com.service.userservice.feign.OrderServiceClient;
 import com.service.userservice.jpa.UserEntity;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -38,6 +39,9 @@ public class UserServiceImpl implements  UserService{
     private BCryptPasswordEncoder passwordEncoder;
     //해당 BCryptPasswordEncoder는 서버실행시 생성된 Bean이 따로없어서 서버실행 클래스파일에서 Bean생성후 @Autowired 해야한다.
 
+    @Autowired
+    private OrderServiceClient orderServiceClient;
+
     //UserService -> UserDetailsService 의 메소드 재정의의
    @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
@@ -73,13 +77,20 @@ public class UserServiceImpl implements  UserService{
             throw new UsernameNotFoundException("User Name Not found");
         }
         UserDto userDto = new ModelMapper().map(userEntity,UserDto.class);
-        List<ResponseOrder> orderList = new ArrayList<>();
+        /*
+        RestTemplate 사용
         String orderUrl = String.format(env.getProperty("order_serivce.url"),userId);
         ResponseEntity<List<ResponseOrder>> orderListResponse =restTemplate.exchange(orderUrl, HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<ResponseOrder>>() {
                 });
+
         // ResponseEntity의 메소드 getBody() : ResponseEntity의 Type으로 변환해서 리턴해준다.
         orderList = orderListResponse.getBody();
+         */
+        // Fegin Client 사용
+        List<ResponseOrder> orderList = orderServiceClient.getOrders(userId);
+
+
         userDto.setOrders(orderList);
         return userDto;
     }
